@@ -3,19 +3,40 @@ import { PurchaseDto, PurchaseModel } from './model'
 import { randomUUID } from 'crypto'
 
 export class DataModel {
+  fee: number = 1.1
+
   newPurchase(dto: PurchaseDto): PurchaseModel {
-    const total = dto.products.reduce((total, product) => {
-      const result = total + product.price
-      return result
-    }, 0)
+    try {
+      const totalAmountProducts = dto.products.reduce(
+        (accumulator, product) => {
+          const totalCurrentProduct = product.price * product.quantity
+          return accumulator + totalCurrentProduct
+        },
+        0
+      )
 
-    const newPurchase: PurchaseModel = {
-      id: randomUUID(),
-      total,
-      ...dto,
+      const isCreditCardPayment =
+        dto.paymentMethod.toUpperCase() === 'CREDIT_CARD'
+
+      const calcTotalPurchase = () => {
+        if (isCreditCardPayment) {
+          return totalAmountProducts * this.fee
+        }
+
+        return totalAmountProducts
+      }
+
+      const newPurchase: PurchaseModel = {
+        id: randomUUID(),
+        ...dto,
+        total: calcTotalPurchase(),
+        fee: isCreditCardPayment ? this.fee : 0,
+      }
+
+      return db.addPurchase(newPurchase)
+    } catch (error: any) {
+      throw new Error(error)
     }
-
-    return db.addPurchase(newPurchase)
   }
 
   getPurchases(): PurchaseModel[] {

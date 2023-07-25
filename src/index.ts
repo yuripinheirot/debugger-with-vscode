@@ -3,29 +3,30 @@ import { PurchaseDto } from './model'
 import { DataModel } from './data'
 
 const app = express()
+app.use(express.json())
 const dataModel = new DataModel()
 
 /*
 
 [] Respostas de erro estao vindo de forma generica
-[] Aplicacao nao esta recebendo body
 [] Ao inserir body corretamente, aplicacao retorna erro
 [] A soma total do pedido esta incorreta
+[] A taxa do pedido esta incorreta quando e pago com cartao de credito
 
 */
 
 app.post('/purchases', (req: Request, res: Response) => {
   try {
-    const { client, products, status } = req.body as PurchaseDto
+    const { client, products, paymentMethod } = req.body as PurchaseDto
 
-    if (client !== undefined || client !== '') {
+    if (client === undefined || client === '') {
       throw new Error('client is required')
     }
-    if (status !== undefined || !status) {
-      throw new Error('status is required')
+    if (paymentMethod === undefined || !paymentMethod) {
+      throw new Error('paymentMethod is required')
     }
-    if (!['DONE', 'OPEN'].includes(status)) {
-      throw new Error('status must be DONE or OPEN')
+    if (!['CREDIT_CARD', 'CASH'].includes(paymentMethod.toLocaleUpperCase())) {
+      throw new Error('paymentMethod must be CREDIT_CARD or CASH')
     }
     if (!products) {
       throw new Error('products is required')
@@ -34,7 +35,7 @@ app.post('/purchases', (req: Request, res: Response) => {
       throw new Error('products must have at least one product')
     }
 
-    const result = dataModel.newPurchase({ client, products, status })
+    const result = dataModel.newPurchase({ client, products, paymentMethod })
 
     res.status(201).send(result)
   } catch (error: any) {
