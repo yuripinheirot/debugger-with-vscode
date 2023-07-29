@@ -1,7 +1,12 @@
 import express, { Request, Response } from 'express'
 import { PurchaseDto } from './model'
 import { DataModel } from './data'
-import { errorIdentification } from './slides'
+import {
+  testsAndValidation,
+  errorIdentification,
+  functionToFunction,
+  saveTime,
+} from './slides'
 
 const app = express()
 app.use(express.json())
@@ -59,6 +64,9 @@ app.post('/slides', (req: Request, res: Response) => {
 
     const methods: Record<string, Function> = {
       errorIdentification,
+      saveTime,
+      functionToFunction,
+      testsAndValidation,
     }
 
     const result = methods[toExecute](param)

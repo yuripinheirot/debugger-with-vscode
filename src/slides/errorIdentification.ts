@@ -1,18 +1,11 @@
 export const errorIdentification = () => {
-  let myValue: number = Math.floor(Math.random() * 100)
+  let result = 0
+  const myArray = [1, 2, 3]
 
-  if (myValue < 30) {
-    myValue *= 2
-  }
-  if (myValue >= 70) {
-    myValue /= 2
+  for (let i = 0; i <= myArray.length; i++) {
+    result += myArray[i]
   }
 
-  const isPair = myValue % 2 === 0
-
-  if (isPair) {
-    myValue = 1000
-  }
-
-  return myValue
+  console.log({ finalResult: result })
+  return result
 }
