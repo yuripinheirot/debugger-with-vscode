@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import { PurchaseDto } from './model'
 import { DataModel } from './data'
+import { errorIdentification } from './slides'
 
 const app = express()
 app.use(express.json())
@@ -25,7 +26,7 @@ app.post('/purchases', (req: Request, res: Response) => {
     if (paymentMethod === undefined || !paymentMethod) {
       throw new Error('paymentMethod is required')
     }
-    if (!['CREDIT_CARD', 'CASH'].includes(paymentMethod.toLocaleUpperCase())) {
+    if (!['CREDIT_CARD', 'CASH'].includes(paymentMethod.toUpperCase())) {
       throw new Error('paymentMethod must be CREDIT_CARD or CASH')
     }
     if (!products) {
@@ -39,7 +40,7 @@ app.post('/purchases', (req: Request, res: Response) => {
 
     res.status(201).send(result)
   } catch (error: any) {
-    res.status(400).send({ error: JSON.stringify(error.message) })
+    res.status(400).send({ error: JSON.stringify(error) })
   }
 })
 
@@ -47,6 +48,22 @@ app.get('/purchases', (req: Request, res: Response) => {
   try {
     const result = dataModel.getPurchases()
     res.status(201).send(result)
+  } catch (error: any) {
+    res.status(400).send({ error: JSON.stringify(error.message) })
+  }
+})
+
+app.post('/slides', (req: Request, res: Response) => {
+  try {
+    const { toExecute, param } = req.body as { toExecute: string; param: any }
+
+    const methods: Record<string, Function> = {
+      errorIdentification,
+    }
+
+    const result = methods[toExecute](param)
+
+    res.status(201).send({ result })
   } catch (error: any) {
     res.status(400).send({ error: JSON.stringify(error.message) })
   }

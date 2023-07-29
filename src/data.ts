@@ -15,8 +15,7 @@ export class DataModel {
         0
       )
 
-      const isCreditCardPayment =
-        dto.paymentMethod.toUpperCase() === 'CREDIT_CARD'
+      const isCreditCardPayment = dto.paymentMethod === 'CREDIT_CARD'
 
       const calcTotalPurchase = () => {
         if (isCreditCardPayment) {
