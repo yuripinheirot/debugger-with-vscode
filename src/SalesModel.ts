@@ -11,4 +11,4 @@ export type SaleModel = {
   products: ProductModel[]
 }
 
-export type SaleDto = Omit<SaleModel, 'id'>
+export type SaleDto = Omit<SaleModel, 'id' | 'total'>

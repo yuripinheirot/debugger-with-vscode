@@ -11,10 +11,23 @@ class SalesData {
     return SalesRepository.findById(id)
   }
 
+  private calculateTotalProducts(payload: SaleDto) {
+    let totalProducts: number = 0
+
+    for (let product of payload.products) {
+      totalProducts += product.price * product.quantity
+    }
+
+    return totalProducts
+  }
+
   insert(payload: SaleDto) {
+    const totalProducts = this.calculateTotalProducts(payload)
+
     const sale: SaleModel = {
       ...payload,
       id: randomUUID(),
+      total: totalProducts,
     }
 
     return SalesRepository.insert(sale)
@@ -36,6 +49,8 @@ class SalesData {
     if (!sale) {
       throw new Error('Sale not found!')
     }
+
+    sale.total = this.calculateTotalProducts(payload)
 
     return SalesRepository.update(id, payload)
   }

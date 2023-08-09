@@ -16,7 +16,7 @@ class SalesRepository {
     },
     {
       id: 'e065f966-2530-4002-8339-8b3bd6dfc456',
-      client: 'Zakk Wyld',
+      client: 'Zakk Wylde',
       products: [
         {
           description: 'Guitar Gibson',
@@ -55,16 +55,23 @@ class SalesRepository {
 
   insert(data: SaleModel) {
     this.sales.push(data)
+    return data
   }
 
   delete(id: string) {
     this.sales = this.sales.filter((sale) => sale.id !== id)
+    return this.sales
   }
 
   update(id: string, data: SaleDto) {
-    const indexSale = this.sales.findIndex((sale) => sale.id === id)
+    const index = this.sales.findIndex((sale) => sale.id === id)
 
-    this.sales[indexSale] = { ...this.sales[indexSale], ...data }
+    this.sales[index] = {
+      ...this.sales[index],
+      ...data,
+    }
+
+    return this.sales[index]
   }
 }
 
