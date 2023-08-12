@@ -4,7 +4,7 @@ class SalesRepository {
   private sales: SaleModel[] = [
     {
       id: '1f43efe3-b450-4ce0-8d1e-ec8cf91d318e',
-      client: 'Marilyn Manson',
+      client: 'Paul',
       products: [
         {
           description: 'Knife',
@@ -16,7 +16,7 @@ class SalesRepository {
     },
     {
       id: 'e065f966-2530-4002-8339-8b3bd6dfc456',
-      client: 'Zakk Wylde',
+      client: 'John',
       products: [
         {
           description: 'Guitar Gibson',
@@ -33,7 +33,7 @@ class SalesRepository {
     },
     {
       id: 'cd8b522f-4e34-4c4a-ab3b-ae405c98222e',
-      client: 'Amy Wine House',
+      client: 'Marley',
       products: [
         {
           description: 'Wine',

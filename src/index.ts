@@ -1,82 +1,15 @@
-import express, { Request, Response } from 'express'
-import { SaleDto } from './SalesModel'
-import SalesData from './SalesData'
+import express from 'express'
+import { SalesController } from './SalesController'
 
 const app = express()
-app.use(express.json())
 const port = process.env.PORT || 3003
 
-app.get('/', (req: Request, res: Response) => {
-  try {
-    const result = SalesData.findAll()
+app.use(express.json())
 
-    res.status(200).send(result)
-  } catch (error: any) {
-    console.log(error)
-    res.status(400).send({ error: error.message })
-  }
-})
-
-app.post('/', (req: Request, res: Response) => {
-  try {
-    const payload = req.body as SaleDto
-
-    if (!payload.products.length) {
-      throw new Error('Products not provided')
-    }
-    if (!payload.client) {
-      throw new Error('Client not provided')
-    }
-
-    const result = SalesData.insert(payload)
-
-    res.status(201).send(result)
-  } catch (error: any) {
-    console.log(error)
-    res.status(400).send({ error: error.message })
-  }
-})
-
-app.put('/:id', (req: Request, res: Response) => {
-  try {
-    const id = req.params.id
-    if (!id) {
-      throw new Error('Id not provided')
-    }
-
-    const payload = req.body as SaleDto
-
-    if (!payload.products || !payload.products.length) {
-      throw new Error('Products not provided')
-    }
-    if (!payload.client) {
-      throw new Error('Client not provided')
-    }
-
-    const result = SalesData.update(id, payload)
-
-    res.status(200).send(result)
-  } catch (error: any) {
-    console.log(error)
-    res.status(400).send({ error: error.message })
-  }
-})
-
-app.delete('/:id', (req: Request, res: Response) => {
-  try {
-    const id = req.params.id
-    if (!id) {
-      throw new Error('Id not provided')
-    }
-
-    const result = SalesData.delete(id)
-
-    res.status(200).send(result)
-  } catch (error: any) {
-    console.log(error)
-    res.status(400).send({ error: error.message })
-  }
-})
+app.get('/', SalesController.findAll)
+app.post('/', SalesController.create)
+app.put('/:id', SalesController.update)
+app.delete('/:id', SalesController.delete)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
