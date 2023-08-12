@@ -8,5 +8,4 @@ services:
       - .:/home/debugger/app
     ports:
       - 3003:3003
-      - 9229:9229
     command: yarn dev
