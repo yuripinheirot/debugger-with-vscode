@@ -11,7 +11,7 @@ class SalesData {
     return SalesRepository.findById(id)
   }
 
-  private calculateTotalProducts(payload: SaleDto) {
+  private calculateTotalOrderValue(payload: SaleDto) {
     let totalProducts: number = 0
 
     for (let product of payload.products) {
@@ -22,7 +22,7 @@ class SalesData {
   }
 
   insert(payload: SaleDto) {
-    const totalProducts = this.calculateTotalProducts(payload)
+    const totalProducts = this.calculateTotalOrderValue(payload)
 
     const sale: SaleModel = {
       ...payload,
@@ -50,7 +50,7 @@ class SalesData {
       throw new Error('Sale not found!')
     }
 
-    sale.total = this.calculateTotalProducts(payload)
+    sale.total = this.calculateTotalOrderValue(payload)
 
     return SalesRepository.update(id, payload)
   }
