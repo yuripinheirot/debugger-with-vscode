@@ -4,7 +4,8 @@ import { randomUUID } from 'crypto'
 
 class SalesData {
   findAll() {
-    return SalesRepository.findAll()
+    const result = SalesRepository.findAll()
+    return
   }
 
   findById(id: string) {
@@ -15,7 +16,7 @@ class SalesData {
     let totalProducts: number = 0
 
     for (let product of payload.products) {
-      totalProducts += product.price * product.quantity
+      totalProducts = product.price * product.quantity
     }
 
     return totalProducts

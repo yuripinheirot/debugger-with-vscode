@@ -18,10 +18,10 @@ export class SalesController {
     try {
       const payload = req.body as SaleDto
 
-      if (!payload.products.length) {
+      if (!payload.products || !payload.products.length) {
         throw new Error('Products not provided')
       }
-      if (!payload.client) {
+      if (payload.client) {
         throw new Error('Client not provided')
       }
 
