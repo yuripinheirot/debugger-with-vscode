@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="index.css"
+    />
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="grid-container">
+        <h1 id="title">Multiplicacao de numeros</h1>
+        <span class="numberInput">
+          <label for="numberOne">NUMERO 1</label>
+          <input
+            type="text"
+            placeholder="Number one"
+            id="numberOne"
+            value="10"
+          />
+        </span>
+        <span class="numberInput">
+          <label for="numberTwo">NUMERO 2</label>
+          <input
+            type="text"
+            placeholder="Number two"
+            id="numberTwo"
+            value="2"
+          />
+        </span>
+        <button
+          id="btn-execute"
+          onclick="execute()"
+        >
+          EXECUTAR
+        </button>
+        <span>
+          <p id="result">Resultado:</p>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

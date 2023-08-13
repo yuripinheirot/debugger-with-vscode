@@ -1,0 +1,61 @@
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px; 
+  justify-items: center; 
+  align-items: center; 
+}
+
+.numberInput {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+h1 {
+  font-size: 32px;
+  color: #202020; 
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+button {
+  background-color: #3498db; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+button:hover {
+  background-color: rgb(97, 97, 97);
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+  outline: none; 
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out; 
+}
+
+input:focus {
+  border-color: #3498db; 
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); 
+}
+
+
+label {
+  font-size: 14px;
+  color: #202020; 
+  margin-bottom: 5px;
+  display: block;
+}
+
+input-field:focus + .label {
+  color: #3498db; 
+}
