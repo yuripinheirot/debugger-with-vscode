@@ -3,6 +3,7 @@ import SalesData from './SalesData'
 import { SaleDto } from './SalesModel'
 
 export class SalesController {
+  // FIXME: Ao acessar a rota ```Get all purchases```, nao esta retornando as purshases
   static findAll(req: Request, res: Response) {
     try {
       const result = SalesData.findAll()
@@ -14,6 +15,7 @@ export class SalesController {
     }
   }
 
+  // FIXME: Ao cadastrar uma nova venda, mesmo inserindo o cliente, retorna erro "Client not provided"
   static create(req: Request, res: Response) {
     try {
       const payload = req.body as SaleDto

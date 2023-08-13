@@ -12,6 +12,7 @@ class SalesData {
     return SalesRepository.findById(id)
   }
 
+  // FIXME: Ao cadastrar uma nova venda com mais de 1 produto, a soma total dos valores esta incorreta
   private calculateTotalOrderValue(payload: SaleDto) {
     let totalProducts: number = 0
 
