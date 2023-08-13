@@ -3,7 +3,7 @@ import SalesData from './SalesData'
 import { SaleDto } from './SalesModel'
 
 export class SalesController {
-  // FIXME: Ao acessar a rota ```Get all purchases```, nao esta retornando as purshases
+  // FIXME: Ao acessar a rota ```Get all sales```, nao esta retornando as sales
   static findAll(req: Request, res: Response) {
     try {
       const result = SalesData.findAll()
