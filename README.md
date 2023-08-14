@@ -2,7 +2,7 @@
 Este repositório contém recursos relacionados à palestra sobre como utilizar o debugger com o Visual Studio Code (VSCode) para aprimorar o processo de debug em aplicações Node.js. A palestra aborda técnicas e dicas para realizar debug de forma mais profissional e eficiente, utilizando as funcionalidades oferecidas pelo VSCode.
 
 ## Recursos Incluídos
-Slides da palestra em formato PDF [disponível aqui](https://docs.google.com/presentation/d/1o-rU4krag3WTnCk022Zr0qFF-73USLGqNv8JRz2Wrj8/edit?usp=sharing).
+Slides da palestra em formato de slides [disponível aqui](https://docs.google.com/presentation/d/1o-rU4krag3WTnCk022Zr0qFF-73USLGqNv8JRz2Wrj8/edit?usp=sharing).
 Exemplos de código utilizados durante a palestra, localizados na pasta ```/src```.
 Instruções para configurar o ambiente de debug utilizando o VSCode, disponíveis no arquivo CONFIGURATION.md.
 Links para recursos externos, referências e documentação relevante.
