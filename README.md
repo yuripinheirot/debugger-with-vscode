@@ -23,7 +23,7 @@ Durante a palestra, foram explorados os seguintes tópicos:
 Se você esteve presente na palestra ou está interessado em aprender mais sobre debugging com o - VSCode, este repositório pode ser utilizado da seguinte maneira:
 Explore os exemplos de código na pasta exemplos para entender como aplicar as técnicas de debugging apresentadas.
 Consulte as instruções de configuração no arquivo CONFIGURATION.md para preparar seu ambiente de desenvolvimento para debugging com o VSCode.
-Utilize os slides disponíveis em slides/slides.pdf para revisar o conteúdo abordado durante a palestra.
+Utilize os [slides](https://docs.google.com/presentation/d/1o-rU4krag3WTnCk022Zr0qFF-73USLGqNv8JRz2Wrj8/edit?usp=sharing) para revisar o conteúdo abordado durante a palestra.
 ## Recursos Adicionais
 Além dos recursos incluídos neste repositório, você pode encontrar mais informações sobre debugging com o VSCode e Node.js nos seguintes links:
 
